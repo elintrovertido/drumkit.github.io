@@ -2,6 +2,7 @@ var noofDrums = document.querySelectorAll("button").length;
 
 for (var i = 0 ;i<noofDrums ; i++){
     
+    // screen button
     document.querySelectorAll(".drum")[i].addEventListener("click",function () {
         // var  audio = new Audio("sounds/tom-1.mp3");
         // audio.play();
@@ -9,6 +10,17 @@ for (var i = 0 ;i<noofDrums ; i++){
         // alert("clicked bruh");
         var buttonInnerHtml = this.innerHTML;
         // console.log(buttonInnerHtml);
+        makesound(buttonInnerHtml);
+    });
+
+    // keyboard button
+    document.addEventListener("keypress",function(event){
+        makesound(event.key);
+    });
+
+
+
+    function makesound(buttonInnerHtml){
         switch (buttonInnerHtml) {
             case "w":
                 var tom1 = new Audio("sounds/tom-1.mp3");
@@ -44,5 +56,5 @@ for (var i = 0 ;i<noofDrums ; i++){
                 break;
     
         }
-    });
+    }
 }
