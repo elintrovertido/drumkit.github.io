@@ -11,11 +11,13 @@ for (var i = 0 ;i<noofDrums ; i++){
         var buttonInnerHtml = this.innerHTML;
         // console.log(buttonInnerHtml);
         makesound(buttonInnerHtml);
+        buttonAnimation(buttonInnerHtml);
     });
 
     // keyboard button
     document.addEventListener("keypress",function(event){
         makesound(event.key);
+        buttonAnimation(event.key);
     });
 
 
@@ -44,7 +46,7 @@ for (var i = 0 ;i<noofDrums ; i++){
                 break;
             case "k":
                 var kickbass = new Audio("sounds/kick-bass.mp3");
-                tom1.play();
+                kickbass.play();
                 break;
             case "l":
                 var snare = new Audio("sounds/snare.mp3");
@@ -57,4 +59,14 @@ for (var i = 0 ;i<noofDrums ; i++){
     
         }
     }
+}
+
+
+function buttonAnimation(key){
+    var activeButton = document.querySelector("."+key);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
 }
